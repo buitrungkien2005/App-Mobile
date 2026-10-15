@@ -38,7 +38,13 @@ export default function UpdateExplorerScreen() {
           {/* Back Button */}
           <TouchableOpacity 
             style={styles.backButton} 
-            onPress={() => router.back()} 
+            onPress={() => {
+              if (router.canGoBack()) {
+                router.back();
+              } else {
+                router.replace('/(tabs)/discover');
+              }
+            }} 
             activeOpacity={0.7}
           >
             <Ionicons name="chevron-back" size={rs(22)} color="#1e1810" />
@@ -111,7 +117,11 @@ export default function UpdateExplorerScreen() {
           </View>
 
           {/* Upgrade CTA Button */}
-          <TouchableOpacity style={styles.upgradeBtn} activeOpacity={0.85}>
+          <TouchableOpacity 
+            style={styles.upgradeBtn} 
+            activeOpacity={0.85}
+            onPress={() => router.push('/(tabs)/explorer-checkout')}
+          >
             <Text style={styles.upgradeBtnText}>Upgrade to Explorer</Text>
           </TouchableOpacity>
         </View>
@@ -153,7 +163,11 @@ export default function UpdateExplorerScreen() {
             </View>
 
             {/* Unlock & Join Button */}
-            <TouchableOpacity style={styles.unlockJoinBtn} activeOpacity={0.85}>
+            <TouchableOpacity 
+              style={styles.unlockJoinBtn} 
+              activeOpacity={0.85}
+              onPress={() => router.push('/(tabs)/explorer-checkout')}
+            >
               <Text style={styles.unlockJoinBtnText}>Unlock & Join</Text>
             </TouchableOpacity>
           </View>

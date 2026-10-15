@@ -467,6 +467,9 @@ export default function ProfileInfoScreen() {
       {/* Comment Modal */}
       <CommentModal visible={isCommentModalVisible} onClose={closeCommentModal} />
 
+      {/* Comment Modal */}
+      <CommentModal visible={isCommentModalVisible} onClose={closeCommentModal} />
+
       {/* TabBar */}
       <TabBarMenu activeTab="profile" />
 

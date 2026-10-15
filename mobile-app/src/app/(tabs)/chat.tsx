@@ -1,8 +1,17 @@
-import React, { useState, useEffect } from 'react';
+<<<<<<< HEAD
+import React from 'react';
+import { View, Text, StyleSheet, Image, TouchableOpacity, Dimensions, TextInput, KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
+import { useLocalSearchParams, useRouter } from 'expo-router';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { Ionicons } from '@expo/vector-icons';
+=======
+import React, { useState, useEffect, useRef } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, Dimensions, TextInput, KeyboardAvoidingView, Platform, ScrollView, Keyboard } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient';
+>>>>>>> 277c38f (Fix giao dien app)
 import { rs } from '../../utils/scaling';
 import TabBarMenu from '../../components/TabBarMenu';
 import AISup from '../../components/AISup';
@@ -11,15 +20,32 @@ const { width } = Dimensions.get('window');
 const OVERLAY_HEIGHT = width * (67 / 393);
 const TABBAR_HEIGHT = 55;
 
+<<<<<<< HEAD
+=======
+interface MessageItem {
+  id: string;
+  sender: 'me' | 'other';
+  text: string;
+  time: string;
+}
+
+>>>>>>> 277c38f (Fix giao dien app)
 const MOCK_DB: Record<string, any> = {
   '1': {
     name: 'Priya Sharma',
     firstName: 'Priya',
+<<<<<<< HEAD
+    avatar: require('../../../assets/images/Avatar_MinhTran.png'), // bee with headphones
+=======
     avatar: require('../../../assets/images/Priya_Sharma.png'), // bee with headphones
+>>>>>>> 277c38f (Fix giao dien app)
   },
   '2': {
     name: 'Jake Miller',
     firstName: 'Jake',
+<<<<<<< HEAD
+    avatar: require('../../../assets/images/Avatar_SoraPark.png'), // bee without headphones
+=======
     avatar: require('../../../assets/images/Jake_Miller.png'), // bee without headphones
   },
   '3': {
@@ -30,7 +56,7 @@ const MOCK_DB: Record<string, any> = {
   '4': {
     name: 'Minh Tran',
     firstName: 'Minh',
-    avatar: require('../../../assets/images/MinhTran_Avatar.png'),
+    avatar: require('../../../assets/images/Avatar_MinhTran.png'),
   },
   'n2': {
     name: 'Elena Rostova',
@@ -82,37 +108,43 @@ const MOCK_DB: Record<string, any> = {
   'd1': {
     name: 'Alex Kim',
     firstName: 'Alex',
-    avatar: require('../../../assets/images/Alex_Kim.png'),
+    avatar: require('../../../assets/images/Avatar_AlexKim.png'),
   },
   'd2': {
     name: 'Minh Tran',
     firstName: 'Minh',
-    avatar: require('../../../assets/images/Minh_Tran.png'),
+    avatar: require('../../../assets/images/Avatar_MinhTran.png'),
   },
   'd3': {
     name: 'Sora Park',
     firstName: 'Sora',
-    avatar: require('../../../assets/images/Sora_Park.png'),
+    avatar: require('../../../assets/images/Avatar_SoraPark.png'),
   },
   'd4': {
     name: 'Yuki Tanaka',
     firstName: 'Yuki',
-    avatar: require('../../../assets/images/Yuki_Tanaka.png'),
+    avatar: require('../../../assets/images/Avatar_YukiTanaka.png'),
   },
   'alex': {
     name: 'Alex Kim',
     firstName: 'Alex',
-    avatar: require('../../../assets/images/Alex_Kim.png'),
+    avatar: require('../../../assets/images/Avatar_AlexKim.png'),
   },
   'sora': {
     name: 'Sora Park',
     firstName: 'Sora',
-    avatar: require('../../../assets/images/Sora_Park.png'),
+    avatar: require('../../../assets/images/Avatar_SoraPark.png'),
   },
   'yuki': {
     name: 'Yuki Tanaka',
     firstName: 'Yuki',
-    avatar: require('../../../assets/images/Yuki_Tanaka.png'),
+    avatar: require('../../../assets/images/Avatar_YukiTanaka.png'),
+  },
+  'minh': {
+    name: 'Minh Tran',
+    firstName: 'Minh',
+    avatar: require('../../../assets/images/Avatar_MinhTran.png'),
+>>>>>>> 277c38f (Fix giao dien app)
   }
 };
 
@@ -120,9 +152,52 @@ export default function ChatScreen() {
   const router = useRouter();
   const { id } = useLocalSearchParams();
   const insets = useSafeAreaInsets();
-  const [isKeyboardVisible, setKeyboardVisible] = useState(false);
+<<<<<<< HEAD
   
   const userData = MOCK_DB[id as string] || MOCK_DB['1'];
+
+=======
+  const [isKeyboardVisible, setKeyboardVisible] = useState(false);
+  const [inputText, setInputText] = useState('');
+  const [messages, setMessages] = useState<MessageItem[]>([]);
+  const scrollViewRef = useRef<ScrollView>(null);
+  
+  const userData = MOCK_DB[id as string] || MOCK_DB['1'];
+
+  const handleSendMessage = (textToSend?: string) => {
+    const content = (textToSend || inputText).trim();
+    if (!content) return;
+
+    const newMsg: MessageItem = {
+      id: Date.now().toString(),
+      sender: 'me',
+      text: content,
+      time: 'Just now'
+    };
+
+    setMessages(prev => [...prev, newMsg]);
+    if (!textToSend) setInputText('');
+
+    setTimeout(() => {
+      scrollViewRef.current?.scrollToEnd({ animated: true });
+    }, 100);
+
+    // Simulated friendly reply from friend
+    if (userData.firstName) {
+      setTimeout(() => {
+        const replyMsg: MessageItem = {
+          id: (Date.now() + 1).toString(),
+          sender: 'other',
+          text: `Hey! Thanks for buzzing me! Great to connect with you! 😊`,
+          time: 'Just now'
+        };
+        setMessages(prev => [...prev, replyMsg]);
+        setTimeout(() => {
+          scrollViewRef.current?.scrollToEnd({ animated: true });
+        }, 100);
+      }, 900);
+    }
+  };
 
   useEffect(() => {
     const showEvt = Platform.OS === 'ios' ? 'keyboardWillShow' : 'keyboardDidShow';
@@ -140,6 +215,7 @@ export default function ChatScreen() {
   const tabbarClearance = rs(TABBAR_HEIGHT) + insets.bottom;
   const bottomPadding = isKeyboardVisible ? rs(12) : tabbarClearance + rs(12);
 
+>>>>>>> 277c38f (Fix giao dien app)
   return (
     <View style={styles.container}>
       <View style={[styles.headerContainer, { height: OVERLAY_HEIGHT + rs(65) }]}>
@@ -148,7 +224,11 @@ export default function ChatScreen() {
           style={[styles.overlay, { position: 'absolute', top: 0, left: 0, height: OVERLAY_HEIGHT }]} 
           resizeMode="cover" 
         />
+<<<<<<< HEAD
+        <View style={[styles.headerTop, { paddingTop: rs(65), position: 'relative' }]}>
+=======
         <View style={[styles.headerTop, { paddingTop: rs(75), position: 'relative' }]}>
+>>>>>>> 277c38f (Fix giao dien app)
           <TouchableOpacity onPress={() => router.back()} style={styles.backButtonRound}>
             <Ionicons name="arrow-back" size={rs(20)} color="#000" />
           </TouchableOpacity>
@@ -163,12 +243,45 @@ export default function ChatScreen() {
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         style={styles.keyboardView}
       >
+<<<<<<< HEAD
         <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
+=======
+        <ScrollView 
+          ref={scrollViewRef}
+          contentContainerStyle={styles.scrollContent} 
+          showsVerticalScrollIndicator={false}
+          onContentSizeChange={() => scrollViewRef.current?.scrollToEnd({ animated: true })}
+        >
+>>>>>>> 277c38f (Fix giao dien app)
           {/* Hexagon pattern can be added as background image if needed, keeping it clean for now */}
           
           <View style={styles.emptyStateContainer}>
             <Image source={userData.avatar} style={styles.largeAvatar} />
             <Text style={styles.emptyStateName}>{userData.name}</Text>
+<<<<<<< HEAD
+            <Text style={styles.emptyStateSub}>Start a conversation with {userData.firstName}</Text>
+          </View>
+
+          <View style={styles.suggestedSection}>
+            <Text style={styles.suggestedTitle}>SUGGESTED BUZZES</Text>
+            
+            <TouchableOpacity style={styles.buzzCardYellow}>
+              <Text style={styles.buzzCardText}>
+                "Hey {userData.firstName}! I noticed we both love coding. What languages are you working with lately?"
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.buzzCardGray}>
+              <Text style={styles.buzzCardText}>
+                "Any good game recommendations? I'm always looking for something new to play!"
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </ScrollView>
+
+        <View style={[styles.inputContainer, { paddingBottom: rs(80) }]}>
+          <TouchableOpacity style={styles.plusButton}>
+=======
             <Text style={styles.emptyStateSub}>
               {userData.isMessageRequest 
                 ? 'Not in your connections' 
@@ -206,23 +319,76 @@ export default function ChatScreen() {
             <View style={styles.suggestedSection}>
               <Text style={styles.suggestedTitle}>SUGGESTED BUZZES</Text>
               
-              <TouchableOpacity style={styles.buzzCardYellow}>
+              <TouchableOpacity 
+                style={styles.buzzCardYellow}
+                onPress={() => handleSendMessage(`Hey ${userData.firstName}! I noticed we both love coding. What languages are you working with lately?`)}
+                activeOpacity={0.8}
+              >
                 <Text style={styles.buzzCardText}>
                   "Hey {userData.firstName}! I noticed we both love coding. What languages are you working with lately?"
                 </Text>
               </TouchableOpacity>
 
-              <TouchableOpacity style={styles.buzzCardGray}>
+              <TouchableOpacity 
+                style={styles.buzzCardGray}
+                onPress={() => handleSendMessage("Any good game recommendations? I'm always looking for something new to play!")}
+                activeOpacity={0.8}
+              >
                 <Text style={styles.buzzCardText}>
                   "Any good game recommendations? I'm always looking for something new to play!"
                 </Text>
               </TouchableOpacity>
             </View>
           )}
+
+          {/* Render Active Conversation Messages */}
+          {messages.length > 0 && (
+            <View style={styles.chatFeedContainer}>
+              <View style={styles.dateDivider}>
+                <View style={styles.dateLine} />
+                <Text style={styles.dateText}>TODAY</Text>
+                <View style={styles.dateLine} />
+              </View>
+
+              {messages.map((item) => (
+                <View 
+                  key={item.id} 
+                  style={[
+                    styles.messageRow,
+                    item.sender === 'me' ? styles.messageRowMe : styles.messageRowOther
+                  ]}
+                >
+                  {item.sender === 'other' && (
+                    <Image source={userData.avatar} style={styles.chatOtherAvatar} />
+                  )}
+                  <View style={item.sender === 'me' ? styles.bubbleMeWrapper : styles.bubbleOtherWrapper}>
+                    {item.sender === 'me' ? (
+                      <LinearGradient
+                        colors={['#fec500', '#f0a300']}
+                        start={{ x: 0, y: 0 }}
+                        end={{ x: 1, y: 0 }}
+                        style={styles.bubbleMe}
+                      >
+                        <Text style={styles.msgTextMe}>{item.text}</Text>
+                      </LinearGradient>
+                    ) : (
+                      <View style={styles.bubbleOther}>
+                        <Text style={styles.msgTextOther}>{item.text}</Text>
+                      </View>
+                    )}
+                    <Text style={[styles.msgTime, item.sender === 'me' ? styles.msgTimeMe : styles.msgTimeOther]}>
+                      {item.time}
+                    </Text>
+                  </View>
+                </View>
+              ))}
+            </View>
+          )}
         </ScrollView>
 
         <View style={[styles.inputContainer, { paddingBottom: bottomPadding }]}>
-          <TouchableOpacity style={styles.plusButton}>
+          <TouchableOpacity style={styles.plusButton} activeOpacity={0.7}>
+>>>>>>> 277c38f (Fix giao dien app)
             <Ionicons name="add" size={rs(24)} color="#111827" />
           </TouchableOpacity>
           
@@ -231,20 +397,42 @@ export default function ChatScreen() {
               style={styles.textInput}
               placeholder="Buzz a message..."
               placeholderTextColor="#9ca3af"
+<<<<<<< HEAD
             />
             <TouchableOpacity style={styles.emojiButton}>
+=======
+              value={inputText}
+              onChangeText={setInputText}
+              onSubmitEditing={() => handleSendMessage()}
+              returnKeyType="send"
+            />
+            <TouchableOpacity style={styles.emojiButton} activeOpacity={0.7}>
+>>>>>>> 277c38f (Fix giao dien app)
               <Ionicons name="happy-outline" size={rs(20)} color="#6b7280" />
             </TouchableOpacity>
           </View>
 
+<<<<<<< HEAD
           <TouchableOpacity style={styles.sendButton}>
+=======
+          <TouchableOpacity 
+            style={[styles.sendButton, !inputText.trim() && { opacity: 0.7 }]} 
+            onPress={() => handleSendMessage()}
+            activeOpacity={0.8}
+          >
+>>>>>>> 277c38f (Fix giao dien app)
             <Ionicons name="arrow-up" size={rs(20)} color="#111827" />
           </TouchableOpacity>
         </View>
       </KeyboardAvoidingView>
 
+<<<<<<< HEAD
+      <AISup isGuest={false} />
+      <TabBarMenu activeTab="messages" />
+=======
       {!isKeyboardVisible && <TabBarMenu activeTab="messages" />}
       <AISup isGuest={false} />
+>>>>>>> 277c38f (Fix giao dien app)
     </View>
   );
 }
@@ -396,6 +584,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+<<<<<<< HEAD
+=======
   requestMessageSection: {
     paddingHorizontal: rs(20),
     marginTop: rs(24),
@@ -471,4 +661,90 @@ const styles = StyleSheet.create({
     color: '#78350f',
     textAlign: 'center',
   },
+  chatFeedContainer: {
+    marginTop: rs(10),
+    marginBottom: rs(16),
+  },
+  dateDivider: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: rs(16),
+  },
+  dateLine: {
+    flex: 1,
+    height: 1,
+    backgroundColor: '#f3f4f6',
+  },
+  dateText: {
+    fontFamily: 'AfacadFlux_700Bold',
+    fontSize: rs(11),
+    color: '#9ca3af',
+    marginHorizontal: rs(12),
+    letterSpacing: 0.5,
+  },
+  messageRow: {
+    flexDirection: 'row',
+    marginBottom: rs(14),
+    alignItems: 'flex-end',
+  },
+  messageRowMe: {
+    justifyContent: 'flex-end',
+  },
+  messageRowOther: {
+    justifyContent: 'flex-start',
+  },
+  chatOtherAvatar: {
+    width: rs(32),
+    height: rs(32),
+    borderRadius: rs(16),
+    marginRight: rs(8),
+    marginBottom: rs(4),
+  },
+  bubbleMeWrapper: {
+    alignItems: 'flex-end',
+    maxWidth: '78%',
+  },
+  bubbleOtherWrapper: {
+    alignItems: 'flex-start',
+    maxWidth: '78%',
+  },
+  bubbleMe: {
+    paddingHorizontal: rs(16),
+    paddingVertical: rs(10),
+    borderRadius: rs(18),
+    borderBottomRightRadius: rs(4),
+  },
+  msgTextMe: {
+    fontFamily: 'AfacadFlux_400Regular',
+    fontSize: rs(15),
+    color: '#ffffff',
+    lineHeight: rs(20),
+  },
+  bubbleOther: {
+    backgroundColor: '#f3f4f6',
+    paddingHorizontal: rs(16),
+    paddingVertical: rs(10),
+    borderRadius: rs(18),
+    borderBottomLeftRadius: rs(4),
+  },
+  msgTextOther: {
+    fontFamily: 'AfacadFlux_400Regular',
+    fontSize: rs(15),
+    color: '#111827',
+    lineHeight: rs(20),
+  },
+  msgTime: {
+    fontFamily: 'AfacadFlux_400Regular',
+    fontSize: rs(11),
+    color: '#9ca3af',
+    marginTop: rs(4),
+  },
+  msgTimeMe: {
+    marginRight: rs(4),
+  },
+  msgTimeOther: {
+    marginLeft: rs(4),
+  },
+>>>>>>> 277c38f (Fix giao dien app)
 });

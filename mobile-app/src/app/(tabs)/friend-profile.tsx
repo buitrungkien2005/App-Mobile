@@ -1,5 +1,10 @@
+<<<<<<< HEAD
+import React from 'react';
+import { View, Text, StyleSheet, Image, TouchableOpacity, Dimensions, ScrollView } from 'react-native';
+=======
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, Dimensions, ScrollView, Modal } from 'react-native';
+>>>>>>> 277c38f (Fix giao dien app)
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
@@ -23,11 +28,19 @@ const MOCK_DB: Record<string, any> = {
     mutualFriendsText: '+9 mutual friends',
     interests: ['Design', 'Tech Mixers', 'Honeys'],
     isConnected: true,
+<<<<<<< HEAD
+    avatar: require('../../../assets/images/Avatar_MinhTran.png'),
+    mutualAvatars: [
+      require('../../../assets/images/Jake.png'),
+      require('../../../assets/images/Priya.png'),
+      require('../../../assets/images/MinTran.png'),
+=======
     avatar: require('../../../assets/images/Priya_Sharma.png'),
     mutualAvatars: [
       require('../../../assets/images/Mutual_Friends_1.png'),
       require('../../../assets/images/Mutual_Friends_2.png'),
       require('../../../assets/images/Mutual_Friends_3.png'),
+>>>>>>> 277c38f (Fix giao dien app)
     ],
   },
   '2': {
@@ -40,6 +53,13 @@ const MOCK_DB: Record<string, any> = {
     mutualFriendsText: '+4 mutual friends',
     interests: ['Design', 'Tech Mixers', 'Honeys'],
     isConnected: false,
+<<<<<<< HEAD
+    avatar: require('../../../assets/images/Avatar_SoraPark.png'),
+    mutualAvatars: [
+      require('../../../assets/images/Jake.png'),
+      require('../../../assets/images/Priya.png'),
+      require('../../../assets/images/MinTran.png'),
+=======
     avatar: require('../../../assets/images/Jake_Miller.png'),
     mutualAvatars: [
       require('../../../assets/images/Mutual_Friends_1.png'),
@@ -230,6 +250,147 @@ const MOCK_DB: Record<string, any> = {
       require('../../../assets/images/Mutual_Friends_2.png'),
       require('../../../assets/images/Mutual_Friends_3.png'),
     ],
+  },
+  'alex': {
+    name: 'Alex Kim',
+    status: 'Online',
+    statusColor: '#10b981',
+    connections: '24',
+    mutual: '12',
+    events: '8',
+    mutualFriendsText: '+9 mutual friends',
+    interests: ['Design', 'Tech Mixers', 'Honeys'],
+    isConnected: true,
+    avatar: require('../../../assets/images/Avatar_AlexKim.png'),
+    mutualAvatars: [
+      require('../../../assets/images/Mutual_Friends_1.png'),
+      require('../../../assets/images/Mutual_Friends_2.png'),
+      require('../../../assets/images/Mutual_Friends_3.png'),
+    ],
+  },
+  'd1': {
+    name: 'Alex Kim',
+    status: 'Online',
+    statusColor: '#10b981',
+    connections: '24',
+    mutual: '12',
+    events: '8',
+    mutualFriendsText: '+9 mutual friends',
+    interests: ['Design', 'Tech Mixers', 'Honeys'],
+    isConnected: true,
+    avatar: require('../../../assets/images/Avatar_AlexKim.png'),
+    mutualAvatars: [
+      require('../../../assets/images/Mutual_Friends_1.png'),
+      require('../../../assets/images/Mutual_Friends_2.png'),
+      require('../../../assets/images/Mutual_Friends_3.png'),
+    ],
+  },
+  'sora': {
+    name: 'Sora Park',
+    status: 'Online',
+    statusColor: '#10b981',
+    connections: '20',
+    mutual: '10',
+    events: '5',
+    mutualFriendsText: '+8 mutual friends',
+    interests: ['Design', 'Reading', 'Yoga'],
+    isConnected: true,
+    avatar: require('../../../assets/images/Avatar_SoraPark.png'),
+    mutualAvatars: [
+      require('../../../assets/images/Mutual_Friends_1.png'),
+      require('../../../assets/images/Mutual_Friends_2.png'),
+      require('../../../assets/images/Mutual_Friends_3.png'),
+    ],
+  },
+  'd3': {
+    name: 'Sora Park',
+    status: 'Online',
+    statusColor: '#10b981',
+    connections: '20',
+    mutual: '10',
+    events: '5',
+    mutualFriendsText: '+8 mutual friends',
+    interests: ['Design', 'Reading', 'Yoga'],
+    isConnected: true,
+    avatar: require('../../../assets/images/Avatar_SoraPark.png'),
+    mutualAvatars: [
+      require('../../../assets/images/Mutual_Friends_1.png'),
+      require('../../../assets/images/Mutual_Friends_2.png'),
+      require('../../../assets/images/Mutual_Friends_3.png'),
+    ],
+  },
+  'yuki': {
+    name: 'Yuki Tanaka',
+    status: 'Online',
+    statusColor: '#10b981',
+    connections: '22',
+    mutual: '7',
+    events: '4',
+    mutualFriendsText: '+7 mutual friends',
+    interests: ['Film', 'Cooking', 'Travel'],
+    isConnected: true,
+    avatar: require('../../../assets/images/Avatar_YukiTanaka.png'),
+    mutualAvatars: [
+      require('../../../assets/images/Mutual_Friends_1.png'),
+      require('../../../assets/images/Mutual_Friends_2.png'),
+      require('../../../assets/images/Mutual_Friends_3.png'),
+    ],
+  },
+  'd4': {
+    name: 'Yuki Tanaka',
+    status: 'Online',
+    statusColor: '#10b981',
+    connections: '22',
+    mutual: '7',
+    events: '4',
+    mutualFriendsText: '+7 mutual friends',
+    interests: ['Film', 'Cooking', 'Travel'],
+    isConnected: true,
+    avatar: require('../../../assets/images/Avatar_YukiTanaka.png'),
+    mutualAvatars: [
+      require('../../../assets/images/Mutual_Friends_1.png'),
+      require('../../../assets/images/Mutual_Friends_2.png'),
+      require('../../../assets/images/Mutual_Friends_3.png'),
+    ],
+  },
+  'minh': {
+    name: 'Minh Tran',
+    status: 'Active now',
+    statusColor: '#10b981',
+    connections: '28',
+    mutual: '15',
+    events: '6',
+    mutualFriendsText: '+15 mutual friends',
+    interests: ['Design', 'Tech Mixers', 'Honeys'],
+    isConnected: true,
+    isCloseCircle: true,
+    avatarBorderColor: '#ffb800',
+    avatar: require('../../../assets/images/MinhTran_Avatar.png'),
+    mutualAvatars: [
+      require('../../../assets/images/Mutual_Friends_1.png'),
+      require('../../../assets/images/Mutual_Friends_2.png'),
+      require('../../../assets/images/Mutual_Friends_3.png'),
+    ],
+  },
+  'd2': {
+    name: 'Minh Tran',
+    status: 'Active now',
+    statusColor: '#10b981',
+    connections: '28',
+    mutual: '15',
+    events: '6',
+    mutualFriendsText: '+15 mutual friends',
+    interests: ['Design', 'Tech Mixers', 'Honeys'],
+    isConnected: true,
+    isCloseCircle: true,
+    avatarBorderColor: '#ffb800',
+    avatar: require('../../../assets/images/MinhTran_Avatar.png'),
+    mutualAvatars: [
+      require('../../../assets/images/Mutual_Friends_1.png'),
+      require('../../../assets/images/Mutual_Friends_2.png'),
+      require('../../../assets/images/Mutual_Friends_3.png'),
+>>>>>>> 277c38f (Fix giao dien app)
+    ],
   }
 };
 
@@ -237,6 +398,10 @@ export default function FriendProfileScreen() {
   const router = useRouter();
   const { id } = useLocalSearchParams();
   const insets = useSafeAreaInsets();
+<<<<<<< HEAD
+  
+  const userData = MOCK_DB[id as string] || MOCK_DB['1'];
+=======
   const [isBlockModalVisible, setBlockModalVisible] = useState(false);
   const [isRequestSent, setIsRequestSent] = useState(false);
   const [hasReceivedRequest, setHasReceivedRequest] = useState(false);
@@ -262,6 +427,7 @@ export default function FriendProfileScreen() {
     if (isConnected) return 'Friend Profile';
     return 'User Profile';
   };
+>>>>>>> 277c38f (Fix giao dien app)
 
   return (
     <View style={styles.container}>
@@ -275,15 +441,24 @@ export default function FriendProfileScreen() {
           <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
             <Ionicons name="arrow-back" size={rs(24)} color="#000" />
           </TouchableOpacity>
+<<<<<<< HEAD
+          <Text style={styles.headerTitle}>{userData.isConnected ? 'Friend Profile' : 'User Profile'}</Text>
+          <View style={{ width: rs(24) }} />
+=======
           <Text style={styles.headerTitle}>
             {getHeaderTitle()}
           </Text>
+>>>>>>> 277c38f (Fix giao dien app)
         </View>
       </View>
 
       <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
         <View style={styles.profileSection}>
+<<<<<<< HEAD
+          <View style={styles.avatarWrapper}>
+=======
           <View style={[styles.avatarWrapper, (userData.avatarBorderColor && (isActuallyCloseCircle || userData.isAttendee || isMessageRequestState)) && { borderColor: userData.avatarBorderColor, borderWidth: 4 }]}>
+>>>>>>> 277c38f (Fix giao dien app)
             <Image source={userData.avatar} style={styles.avatarLarge} />
           </View>
           <Text style={styles.userName}>{userData.name}</Text>
@@ -336,6 +511,9 @@ export default function FriendProfileScreen() {
         </View>
 
         <View style={styles.actionsSection}>
+<<<<<<< HEAD
+          {userData.isConnected ? (
+=======
           {isActuallyCloseCircle ? (
             <>
               <TouchableOpacity onPress={() => router.push({ pathname: '/(tabs)/chat', params: { id: id as string } })}>
@@ -358,6 +536,7 @@ export default function FriendProfileScreen() {
               </TouchableOpacity>
             </>
           ) : isConnected ? (
+>>>>>>> 277c38f (Fix giao dien app)
             <>
               <TouchableOpacity onPress={() => router.push({ pathname: '/(tabs)/chat', params: { id: id as string } })}>
                 <LinearGradient
@@ -367,6 +546,19 @@ export default function FriendProfileScreen() {
                   end={{ x: 1, y: 0 }}
                 >
                   <Ionicons name="chatbubble-outline" size={rs(20)} color="#fff" style={{ marginRight: rs(8) }} />
+<<<<<<< HEAD
+                  <Text style={styles.primaryBtnText}>Message Priya</Text>
+                </LinearGradient>
+              </TouchableOpacity>
+              
+              <TouchableOpacity style={[styles.secondaryBtn, { borderColor: '#ef4444' }]}>
+                <Text style={[styles.secondaryBtnText, { color: '#ef4444' }]}>Remove Friend</Text>
+              </TouchableOpacity>
+            </>
+          ) : (
+            <>
+              <TouchableOpacity>
+=======
                   <Text style={styles.primaryBtnText}>Message {userData.name.split(' ')[0]}</Text>
                 </LinearGradient>
               </TouchableOpacity>
@@ -433,6 +625,7 @@ export default function FriendProfileScreen() {
           ) : (
             <>
               <TouchableOpacity onPress={() => setIsRequestSent(true)}>
+>>>>>>> 277c38f (Fix giao dien app)
                 <LinearGradient
                   colors={['#ffb800', '#ff9800']}
                   style={styles.primaryBtn}
@@ -443,22 +636,34 @@ export default function FriendProfileScreen() {
                 </LinearGradient>
               </TouchableOpacity>
               
+<<<<<<< HEAD
+              <TouchableOpacity style={[styles.secondaryBtn, { borderColor: '#f59e0b' }]}>
+=======
               <TouchableOpacity 
                 style={[styles.secondaryBtn, { borderColor: '#f59e0b' }]}
                 onPress={() => router.push({ pathname: '/(tabs)/chat', params: { id: id as string } })}
               >
+>>>>>>> 277c38f (Fix giao dien app)
                 <Text style={[styles.secondaryBtnText, { color: '#f59e0b' }]}>Send Message Request</Text>
               </TouchableOpacity>
             </>
           )}
 
+<<<<<<< HEAD
+          <TouchableOpacity style={styles.blockLink}>
+=======
           <TouchableOpacity style={styles.blockLink} onPress={() => setBlockModalVisible(true)}>
+>>>>>>> 277c38f (Fix giao dien app)
             <Text style={styles.blockText}>Block User</Text>
           </TouchableOpacity>
         </View>
 
       </ScrollView>
 
+<<<<<<< HEAD
+      <AISup isGuest={false} />
+      <TabBarMenu activeTab="messages" />
+=======
       <Modal visible={isBlockModalVisible} transparent={true} animationType="fade">
         <View style={styles.modalOverlay}>
           <View style={styles.modalContent}>
@@ -482,6 +687,7 @@ export default function FriendProfileScreen() {
       <TabBarMenu activeTab="messages" />
 
       <AISup isGuest={false} />
+>>>>>>> 277c38f (Fix giao dien app)
     </View>
   );
 }
@@ -500,10 +706,16 @@ const styles = StyleSheet.create({
   },
   headerTop: {
     flexDirection: 'row',
+<<<<<<< HEAD
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: rs(20),
+=======
     justifyContent: 'flex-start',
     alignItems: 'center',
     paddingHorizontal: rs(20),
     gap: rs(12),
+>>>>>>> 277c38f (Fix giao dien app)
   },
   backButton: {
     padding: rs(4),
@@ -512,6 +724,10 @@ const styles = StyleSheet.create({
     fontFamily: 'Dongle_700Bold',
     fontSize: rs(36),
     color: '#111827',
+<<<<<<< HEAD
+    marginTop: rs(8),
+=======
+>>>>>>> 277c38f (Fix giao dien app)
   },
   scrollContent: {
     paddingTop: rs(20),
@@ -666,6 +882,8 @@ const styles = StyleSheet.create({
     fontSize: rs(14),
     color: '#9ca3af',
     textDecorationLine: 'underline',
+<<<<<<< HEAD
+=======
   },
   modalOverlay: {
     flex: 1,
@@ -734,5 +952,6 @@ const styles = StyleSheet.create({
     fontFamily: 'Inter_600SemiBold',
     fontSize: rs(16),
     color: '#ffffff',
+>>>>>>> 277c38f (Fix giao dien app)
   }
 });

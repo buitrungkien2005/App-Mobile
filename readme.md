@@ -28,14 +28,15 @@ flowchart TD
             G_PROF["profile.tsx (Guest Khóa hồ sơ cá nhân)"]
         end
 
-        subgraph TABS["(tabs)/ - Phân hệ Người dùng chính thức (User Flow - 28 screens)"]
+        subgraph TABS["(tabs)/ - Phân hệ Người dùng chính thức (User Flow - 31 screens)"]
             T_HOME["home.tsx (Feed chính & Comment)"]
             T_DISCOVER["discover.tsx & search-buddy.tsx"]
             T_POST["up-post.tsx, view-post.tsx, edit-post.tsx"]
-            T_CHAT["messages.tsx & chat.tsx (1-1 Chat)"]
+            T_CHAT["messages.tsx, add-to-group.tsx, group-chat.tsx & chat.tsx"]
             T_PROF["profile.tsx, profile-info.tsx, profile-setting.tsx"]
             T_COMM["8 Hội nhóm Cộng đồng + See All Communities/People"]
             T_SETT["Cài đặt: Notifications, Privacy, Theme, Language, Password"]
+            T_CREAT["Nâng cấp Explorer, Checkout, Tạo cộng đồng & Creator Home"]
         end
     end
 
@@ -103,27 +104,32 @@ flowchart TD
 ---
 
 ### D. Phân hệ Người dùng chính thức (`mobile-app/src/app/(tabs)/`)
-*Bao gồm 28 màn hình giao diện:*
+*Bao gồm 31 màn hình giao diện:*
 
 1. **Bảng tin & Tương tác**:
    * `home.tsx`: Bảng tin đầy đủ tính năng: đăng bài, thả tim, bình luận với [`CommentModal.tsx`](mobile-app/src/components/CommentModal.tsx).
    * `up-post.tsx`, `view-post.tsx`, `edit-post.tsx`: Quy trình tạo, xem chi tiết và chỉnh sửa bài viết.
 2. **Khám phá & Bạn bè**:
    * `discover.tsx`: Trang khám phá sự kiện, hội nhóm.
-   * `search-buddy.tsx`: Tìm kiếm bạn bè theo sở thích, ngôn ngữ, địa điểm.
+   * `search-buddy.tsx`: Tìm kiếm bạn bè theo sở thích, ngôn ngữ, địa điểm (kèm thẻ Alpine Trail Buddies).
    * `see-all-communities.tsx`: Danh mục tất cả cộng đồng.
    * `see-all-people.tsx`: Danh mục đề xuất kết nối mọi người.
    * `friend-profile.tsx`: Xem trang cá nhân của bạn bè.
 3. **Chi tiết 8 Hội nhóm Cộng đồng**:
    * `book-and-coffee-club.tsx`, `coding-coffee-club.tsx`, `fitness-and-wellness-club.tsx`, `pet-friends-saigon.tsx`, `photography-walk.tsx`, `study-buddy-circle.tsx`, `tech-innovators-hub.tsx`, `weekend-hikers.tsx`.
 4. **Hội thoại & Nhắn tin**:
-   * `messages.tsx`: Hộp thư đến, danh sách bạn chat và tin nhắn chờ.
+   * `messages.tsx`: Hộp thư đến, danh sách bạn chat, nút tạo nhóm chat `+ Create group chat` và tin nhắn chờ.
+   * `add-to-group.tsx`: Giao diện thêm bạn bè vào nhóm chat mới (tìm kiếm, chọn nhiều bạn bè, đặt tên nhóm "Group name" và nút "Create group").
+   * `group-chat.tsx`: Giao diện phòng chat nhóm (Group Chat) với cụm avatar thành viên facepile, lịch sử tin nhắn nhiều thành viên, gợi ý trả lời nhanh và ô nhập chat real-time.
    * `chat.tsx`: Khung chat trực tiếp 1-1 với bạn bè.
-5. **Hồ sơ cá nhân & Cài đặt hệ thống**:
+5. **Hồ sơ cá nhân, Nâng cấp & Cài đặt hệ thống**:
    * `profile.tsx`, `profile-info.tsx`, `profile-setting.tsx`: Quản lý hồ sơ, thẻ thông tin cá nhân và thiết lập tài khoản.
    * `notifications.tsx`, `notification-setting.tsx`: Quản lý thông báo và cấu hình nhận tin.
    * `privacy-safety.tsx`, `change-password.tsx`, `change-password-success.tsx`: Bảo mật và quản lý mật khẩu.
-   * `theme.tsx`, `language.tsx`, `about-beebuddy.tsx`, `help-center.tsx`, `update-explorer.tsx`: Tùy biến chủ đề, ngôn ngữ và thông tin ứng dụng.
+   * `theme.tsx`, `language.tsx`, `about-beebuddy.tsx`, `help-center.tsx`: Tùy biến chủ đề, ngôn ngữ, giới thiệu và trung tâm hỗ trợ.
+   * `update-explorer.tsx`, `explorer-checkout.tsx`: Giới thiệu gói Explorer và giao diện thanh toán Apple Pay/Credit Card.
+   * `create-community.tsx`: Thiết lập thông tin Nest mới sau thanh toán (ảnh bìa, avatar, tên, chủ đề, vị trí, quyền riêng tư).
+   * `alpine-trail-buddies.tsx`: Giao diện Creator Home của cộng đồng vừa tạo (Live banner, cover/avatar, badge You're the creator · Admin, checklist 3 bước kích hoạt Nest, feed empty state và nút viết bài chào mừng).
 
 ---
 

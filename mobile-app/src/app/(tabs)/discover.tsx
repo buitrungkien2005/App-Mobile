@@ -14,7 +14,11 @@ type ConnectState = 'Connect' | 'Pending' | 'Accept' | 'Connected' | 'Disconnect
 
 const UserConnectButton = () => {
   const [state, setState] = useState<ConnectState>('Connect');
+<<<<<<< HEAD
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
+=======
   const timerRef = useRef<any>(null);
+>>>>>>> 277c38f (Fix giao dien app)
 
   useEffect(() => {
     return () => {
@@ -135,7 +139,11 @@ export default function DiscoverScreen() {
               <Image source={require('../../../assets/images/Avatar_Me.png')} style={styles.headerAvatar} />
             </TouchableOpacity>
 
+<<<<<<< HEAD
+            <TouchableOpacity style={styles.filterBtn}>
+=======
             <TouchableOpacity style={styles.filterBtn} onPress={() => router.push('/(tabs)/search-buddy')}>
+>>>>>>> 277c38f (Fix giao dien app)
               <Ionicons name="options-outline" size={rs(20)} color="#000" />
             </TouchableOpacity>
           </View>
@@ -257,10 +265,14 @@ export default function DiscoverScreen() {
 
                 <View style={styles.userActions}>
                   <UserConnectButton />
+<<<<<<< HEAD
+                  <TouchableOpacity style={styles.chatBtn}>
+=======
                   <TouchableOpacity 
                     style={styles.chatBtn}
                     onPress={() => router.push({ pathname: '/(tabs)/chat', params: { id: user.id } })}
                   >
+>>>>>>> 277c38f (Fix giao dien app)
                     <Ionicons name="chatbubble" size={rs(16)} color="#ffbb00" style={{ marginRight: rs(6) }} />
                     <Text style={styles.chatBtnText}>Chat</Text>
                   </TouchableOpacity>

@@ -95,9 +95,13 @@ export default function AISup({ isGuest = false }: AISupProps) {
         styles.floatingBee,
         { 
           bottom: initialBottom,
+<<<<<<< HEAD
+          transform: [{ translateX: pan.x }, { translateY: pan.y }]
+=======
           transform: [{ translateX: pan.x }, { translateY: pan.y }],
           zIndex: 99999,
           elevation: 99999,
+>>>>>>> 277c38f (Fix giao dien app)
         }
       ]}
     >

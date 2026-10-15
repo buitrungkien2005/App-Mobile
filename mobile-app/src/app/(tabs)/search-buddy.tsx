@@ -102,6 +102,15 @@ export default function SearchBuddyScreen() {
 
   const publicCommunities = [
     {
+      id: 'alpine',
+      title: 'Alpine Trail Buddies',
+      desc: 'Easy trails, fresh air and good company. A welcoming space for weekend walks around Chamonix.',
+      members: '1',
+      image: require('../../../assets/images/Alpine.png'),
+      tags: ['Hiking', 'Chamonix'],
+      buttonText: 'View my community'
+    },
+    {
       id: 'c1',
       title: 'Photography Walk HCMC',
       desc: 'Explore the city together and capture beautiful moments',
@@ -285,7 +294,9 @@ export default function SearchBuddyScreen() {
                   style={styles.viewCommunityBtn}
                   activeOpacity={0.8}
                   onPress={() => {
-                    if (item.id === 'c1') {
+                    if (item.id === 'alpine') {
+                      router.push('/(tabs)/alpine-trail-buddies' as any);
+                    } else if (item.id === 'c1') {
                       router.push('/(tabs)/photography-walk' as any);
                     } else if (item.id === 'c2') {
                       router.push('/(tabs)/study-buddy-circle' as any);
@@ -304,7 +315,15 @@ export default function SearchBuddyScreen() {
                     }
                   }}
                 >
-                  <Text style={styles.viewCommunityBtnText}>View Community</Text>
+                  <Text 
+                    style={[
+                      styles.viewCommunityBtnText,
+                      item.buttonText ? { fontSize: rs(12) } : null
+                    ]} 
+                    numberOfLines={1}
+                  >
+                    {item.buttonText || 'View Community'}
+                  </Text>
                 </TouchableOpacity>
               </View>
             </View>
